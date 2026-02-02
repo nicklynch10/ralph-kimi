@@ -1,0 +1,22 @@
+# Ralph runtime files
+prd.json
+progress.txt
+.last-branch
+archive/
+
+# Kimi sessions (if stored in project)
+.kimi/sessions/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
