@@ -1,0 +1,101 @@
+{
+  "version": "1.0.0",
+  "project": "TaskManager",
+  "description": "A simple task management web app",
+  "createdAt": "2025-02-02T12:00:00Z",
+  "updatedAt": "2025-02-02T12:00:00Z",
+  "metadata": {
+    "repository": "https://github.com/example/taskmanager",
+    "defaultBranch": "main",
+    "techStack": ["nextjs", "typescript", "tailwindcss", "prisma", "postgresql"]
+  },
+  "lanes": {
+    "feature": [
+      {
+        "id": "FEAT-001",
+        "title": "Add task priority levels",
+        "intent": "Allow users to assign priority (high/medium/low) to tasks",
+        "description": "Users need to prioritize tasks. Add priority field to database, display badge on cards, allow editing.",
+        "definitionOfDone": {
+          "criteria": [
+            "Priority column exists in database with proper enum constraint",
+            "Task cards display colored priority badges",
+            "Users can change priority in edit modal",
+            "All unit tests pass",
+            "TypeScript typecheck passes",
+            "ESLint passes"
+          ],
+          "verifierBundle": [
+            "npm run typecheck",
+            "npm run lint",
+            "npm run test:unit",
+            "npm run db:migrate"
+          ],
+          "playwrightScenarios": [
+            "user-sees-priority-badge",
+            "user-changes-priority"
+          ]
+        },
+        "constraints": {
+          "scopeFiles": [
+            "src/components/tasks/",
+            "src/lib/db/schema.prisma",
+            "src/app/api/tasks/"
+          ],
+          "noTouchFiles": [
+            "src/lib/auth/",
+            "src/middleware.ts"
+          ],
+          "dependencies": []
+        },
+        "status": "pending",
+        "priority": 2,
+        "createdAt": "2025-02-02T12:00:00Z",
+        "attempts": 0,
+        "maxAttempts": 5,
+        "artifacts": {},
+        "failureLog": [],
+        "notes": "Start with database schema, then UI components"
+      }
+    ],
+    "bugfix": [],
+    "hardening": [
+      {
+        "id": "HARD-001",
+        "title": "Add E2E test coverage for task CRUD",
+        "intent": "Ensure task creation, reading, updating, deletion works end-to-end",
+        "definitionOfDone": {
+          "criteria": [
+            "Playwright tests cover create task flow",
+            "Playwright tests cover edit task flow",
+            "Playwright tests cover delete task flow",
+            "All E2E tests pass consistently"
+          ],
+          "verifierBundle": [
+            "npx playwright test e2e/tasks/"
+          ],
+          "playwrightScenarios": [
+            "e2e-task-crud"
+          ]
+        },
+        "constraints": {
+          "scopeFiles": [
+            "e2e/",
+            "tests/"
+          ],
+          "dependencies": []
+        },
+        "status": "pending",
+        "priority": 3,
+        "createdAt": "2025-02-02T12:00:00Z"
+      }
+    ],
+    "infrastructure": []
+  },
+  "systemStatus": {
+    "lastBuildStatus": "green",
+    "lastTestStatus": "green",
+    "blockingFailures": [],
+    "stabilityWindowMet": true
+  }
+}
